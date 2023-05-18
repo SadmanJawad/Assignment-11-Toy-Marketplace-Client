@@ -37,7 +37,7 @@ const Navbar = () => {
             <a href="#" className="text-gray-900 dark:text-white hover:underline">Add a toy</a>
         </li>
         <li>
-            <a href="#" className="text-gray-900 dark:text-white hover:underline">Add a toy</a>
+            <a href="#" className="text-gray-900 dark:text-white hover:underline">Blogs</a>
         </li>
         <li>
             <a href="#" className="text-gray-900 dark:text-white hover:underline">Contact Us</a>
