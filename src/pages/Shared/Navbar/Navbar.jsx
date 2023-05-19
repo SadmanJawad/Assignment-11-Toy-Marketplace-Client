@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link to='/' className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
         </li>
         <li>
-            <a href="#" className="text-gray-900 dark:text-white hover:underline">All Toys</a>
+            <Link to='/allToys' className="text-gray-900 dark:text-white hover:underline">All Toys</Link>
         </li>
         <li>
             <a href="#" className="text-gray-900 dark:text-white hover:underline">My Toys</a>
