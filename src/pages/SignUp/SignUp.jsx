@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
 import img from "../../assets/images/img.svg";
 import { FaGoogle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
 
+    const {createUser} = useContext(AuthContext)
+
     const handleSignUp = event => {
         event.preventDefault(); // prevent page from reloading on submit  
-        console.log('sign up form submitted');
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
     
 
