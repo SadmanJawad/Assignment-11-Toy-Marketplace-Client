@@ -37,7 +37,7 @@ const Login = () => {
    const handleGoogleSignIn =() =>{
     googleSignIn()
     .then(result =>{
-        const user =result.user
+        const user =result.user;
         Navigate('/')
     })
     .catch(error =>{

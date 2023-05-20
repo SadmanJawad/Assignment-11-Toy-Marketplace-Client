@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import companyLogo from '../../../assets/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user)
+    const handleLogout = () => {
+      logOut();
+    };
+
     return (
       <div>
 <nav className="bg-sky-300 border-gray-200 dark:bg-gray-900">
@@ -16,7 +24,15 @@ const Navbar = () => {
         <div className="flex items-center">
          <p href="tel:5541251234" className="mr-2 text-md  text-white dark:text-white">Welcome to Toytopia</p>
             <span className='mr-2 ml-2 text-white'>|</span>
-        <Link to='/login' className="ml-2 text-md  text-white dark:text-blue-500 hover:underline">Login</Link>
+            {user ? (
+                <Link
+                onClick={handleLogout}
+                className="ml-2 text-md  text-white dark:text-blue-500 hover:underline"
+                >Logout
+                </Link>
+            ) : (
+                <Link to='/login' className="ml-2 text-md  text-white dark:text-blue-500 hover:underline">Login</Link>
+            )}
         </div>
     </div>
 </nav>
