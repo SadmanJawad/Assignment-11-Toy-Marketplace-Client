@@ -1,48 +1,50 @@
-import { useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddAToy = () => {
   const [selectedOption, setSelectedOption] = useState("");
-
+  const { user } = useContext(AuthContext);
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
-  const handleAddCoffee = (event) => {
+  const handleAddToy = (event) => {
     event.preventDefault();
 
     const form = event.target;
 
+    const pictureUrl = form.pictureUrl.value;
     const name = form.name.value;
-    const quantity = form.quantity.value;
     const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
+    const subCategory = form.subCategory.value;
+    const price = form.price.value;
     const rating = form.rating.value;
-    const category = form.category.value;
-    const details = form.details.value;
-    const photo = form.photo.value;
-    const email = form.email.value;
+    const availableQuantity = form.availableQuantity.value;
+    const description = form.description.value;
 
-    const newCoffee = {
+    const newToy = {
+      pictureUrl,
       name,
-      quantity,
       sellerName,
+      sellerEmail,
+      subCategory,
+      price,
       rating,
-      category,
-      details,
-      photo,
-      email,
+      availableQuantity,
+      description,
     };
 
-    console.log(newCoffee);
+    console.log(newToy);
 
     // send data to the server
-    fetch("https://toy-store-server-zeta.vercel.app/addAToy", {
+    fetch("http://localhost:5000/addAToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCoffee),
+      body: JSON.stringify(newToy),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -50,7 +52,7 @@ const AddAToy = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
-            text: "Coffee Added Successfully",
+            text: "Toy Added Successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -60,7 +62,7 @@ const AddAToy = () => {
   return (
     <div className="bg-sky-100 p-12">
       <h2 className="text-4xl font-light text-center mb-5">Add a toy</h2>
-      <form onSubmit={handleAddCoffee}>
+      <form onSubmit={handleAddToy}>
         {/* form toy name and seller name */}
         <div className="md:flex mb-8">
           <div className="form-control md:w-1/2">
@@ -82,6 +84,8 @@ const AddAToy = () => {
             </label>
             <label className="input-group">
               <input
+                readOnly
+                defaultValue={user?.displayName}
                 type="text"
                 name="sellerName"
                 placeholder="Seller Name"
@@ -107,13 +111,15 @@ const AddAToy = () => {
           </div>
           <div className="form-control md:w-1/2 ml-4">
             <label className="label">
-              <span className="label-text">Email</span>
+              <span className="label-text">Seller Email</span>
             </label>
             <label className="input-group">
               <input
+                readOnly
                 type="email"
-                name="email"
-                placeholder="Email"
+                name="sellerEmail"
+                defaultValue={user?.email}
+                placeholder="Seller Email"
                 className="input input-bordered w-full"
               />
             </label>
@@ -127,8 +133,8 @@ const AddAToy = () => {
               <label htmlFor="dropdown">Subcategory</label>
               <input
                 type="text"
-                name="category"
-               placeholder="Choose toy category"
+                name="subCategory"
+                placeholder="Choose toy category"
                 data-dropdown-toggle="dropdown"
                 className="input input-bordered w-full"
                 id="inputField"
@@ -136,8 +142,8 @@ const AddAToy = () => {
               ></input>
 
               <select
-              className="-ml-44"
-              required
+                className="-ml-44"
+                required
                 id="dropdown"
                 value={selectedOption}
                 onChange={handleDropdownChange}
@@ -158,7 +164,7 @@ const AddAToy = () => {
             <label className="input-group">
               <input
                 type="text"
-                name="details"
+                name="description"
                 placeholder="Details"
                 className="input input-bordered w-full"
               />
@@ -174,13 +180,12 @@ const AddAToy = () => {
             <label className="input-group">
               <input
                 type="text"
-                name="photo"
+                name="pictureUrl"
                 placeholder="Photo URL"
                 className="input input-bordered w-full"
               />
             </label>
           </div>
-       
         </div>
         {/* form price & quantity row */}
         <div className="md:flex mb-8">
@@ -204,14 +209,18 @@ const AddAToy = () => {
             <label className="input-group">
               <input
                 type="quantity"
-                name="quantity"
+                name="availableQuantity"
                 placeholder="Quantity"
                 className="input input-bordered w-full"
               />
             </label>
           </div>
         </div>
-        <input type="submit" value="Add a toy" className="btn btn-block bg-sky-400 border-none" />
+        <input
+          type="submit"
+          value="Add a toy"
+          className="btn btn-block bg-sky-400 border-none"
+        />
       </form>
     </div>
   );

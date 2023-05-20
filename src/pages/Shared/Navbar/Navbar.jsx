@@ -60,12 +60,15 @@ const Navbar = () => {
         <li>
             <Link to='/' className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
         </li>
-        <li>
-            <Link to='/allToys' className="text-gray-900 dark:text-white hover:underline">All Toys</Link>
-        </li>
-        <li>
+       {
+        user &&  <li>
+        <Link to='/allToys' className="text-gray-900 dark:text-white hover:underline">All Toys</Link>
+    </li>
+       }
+     {user &&    <li>
             <Link to='/myToys' className="text-gray-900 dark:text-white hover:underline">My Toys</Link>
-        </li>
+        </li> 
+     }
         <li>
             <Link to='/add-a-toy' className="text-gray-900 dark:text-white hover:underline">Add a toy</Link>
         </li>
