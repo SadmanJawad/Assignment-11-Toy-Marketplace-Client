@@ -4,7 +4,7 @@ import AllToysRow from "./AllToysRow";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
 
-  const url = "http://localhost:5000/toys";
+  const url = "https://toy-store-server-zeta.vercel.app/toys";
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

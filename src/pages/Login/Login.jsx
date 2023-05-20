@@ -1,27 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/img.svg";
 import { FaGoogle } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const {signIn, googleSignIn} = useContext(AuthContext)
+    const [error, setError] = useState("");
+    const Navigate = useNavigate();
+    const location = useLocation();
+    console.log('login page location', location);
+    const from = location.state?.from?.pathname || '/';
+
 
     const handleLogin = event => {
         event.preventDefault(); // prevent page from reloading on submit
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        console.log( email, password);
+       
         signIn(email, password)
         .then(result => {
-            const user = result.user;
-            console.log(user);
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            setError("");
+            Navigate(from, {replace: true})
         })
         .catch(error => {
-            console.log(error);
-        })
+            console.log(error.message);
+            setError(error.message);
+            event.target.reset();
+        })  
     }
+       // Google Login 
+   const handleGoogleSignIn =() =>{
+    googleSignIn()
+    .then(result =>{
+        const user =result.user
+        Navigate('/')
+    })
+    .catch(error =>{
+        console.log(error.message)
+    })
+}
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -60,6 +82,7 @@ const Login = () => {
                   </a>
                 </label>
               </div>
+              <p className="text-red-700" >{error}</p>
               <div className="form-control mt-6">
                 <input
                   className="btn bg-sky-500 border-none"
@@ -76,6 +99,7 @@ const Login = () => {
             </p>
             {/* google button */}
             <button
+            onClick={handleGoogleSignIn}
               type="button"
               className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2"
             >
