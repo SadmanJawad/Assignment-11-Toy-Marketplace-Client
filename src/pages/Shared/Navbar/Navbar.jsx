@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import companyLogo from '../../../assets/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -24,6 +25,22 @@ const Navbar = () => {
         <div className="flex items-center">
          <p href="tel:5541251234" className="mr-2 text-md  text-white dark:text-white">Welcome to Toytopia</p>
             <span className='mr-2 ml-2 text-white'>|</span>
+            {user && 
+          <li className="tooltip tooltip-bottom" 
+          data-tip={user.displayName ?  user.displayName : 'User name unavailable'}
+          >
+              <Link
+              to='/user-profile'
+              className={({ isActive }) => (isActive ? 'active' : 'default')}
+              >
+              {
+                user.photoURL ?   <img className="rounded-full w-10 h-10" src={user?.photoURL} alt="" /> :
+                <FaUser></FaUser>
+              }
+              </Link>
+
+                    </li>}
+          
             {user ? (
                 <Link
                 onClick={handleLogout}
@@ -47,10 +64,10 @@ const Navbar = () => {
             <Link to='/allToys' className="text-gray-900 dark:text-white hover:underline">All Toys</Link>
         </li>
         <li>
-            <a href="#" className="text-gray-900 dark:text-white hover:underline">My Toys</a>
+            <Link to='/myToys' className="text-gray-900 dark:text-white hover:underline">My Toys</Link>
         </li>
         <li>
-            <a href="#" className="text-gray-900 dark:text-white hover:underline">Add a toy</a>
+            <Link to='/add-a-toy' className="text-gray-900 dark:text-white hover:underline">Add a toy</Link>
         </li>
         <li>
             <a href="#" className="text-gray-900 dark:text-white hover:underline">Blogs</a>

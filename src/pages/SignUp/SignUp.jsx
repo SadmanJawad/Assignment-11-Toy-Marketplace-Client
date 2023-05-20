@@ -1,10 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/img.svg";
-import { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, userProfileUpdate } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const Navigate = useNavigate();
@@ -19,6 +19,7 @@ const SignUp = () => {
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
     console.log(name, email, password);
 
@@ -35,9 +36,18 @@ const SignUp = () => {
         setError("");
         setSuccess("User has been created successfully");
         Navigate(from, { replace: true });
+        
+          // update user profile photo , name
+          userProfileUpdate = (name , photo)
+          .then(() => {
+            console.log('User profile update successfully')
+          }) 
+          .catch(error => {
+            console.log('Failed to update user profile', error)
+          })
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
         setError(error.message);
       });
   };

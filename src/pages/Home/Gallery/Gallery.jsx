@@ -9,52 +9,50 @@ import Marquee from "react-fast-marquee";
 
 const Gallery = () => {
   return (
-    <Marquee>
-      <div className="container mt-4 mx-auto">
-     <div className="flex">
-     <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-     <p className="text-2xl mx-10">|</p>
-        <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-        <p className="text-2xl mx-10">|</p>
-        <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-        <p className="text-2xl mx-10">|</p>
-        <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-        <p className="text-2xl mx-10">|</p>
-        <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-        <p className="text-2xl mx-10">|</p>
-        <h1 className="text-center text-2xl mb-4">Latest Products</h1>
-        <p className="text-2xl mx-10">|</p>
+   <div className="bg-sky-50">
+       <h1 className="text-5xl text-center my-2 font-light font-serif">Photo Gallery</h1>
+     <Marquee>
+      <div className="container mt-4 mx-auto ">
+        <div className="flex">
+          <h1 className="text-center text-lg mb-4">Check Out Our Release List Now...</h1>
 
-     </div>
+          <h1 className="text-center text-lg mb-4"> Discover the Latest Releases and
+            Features...</h1>
+  
+          <h1 className="text-center text-lg mb-4">Check Out Our Release List Now...</h1>
+  
+          <h1 className="text-center text-lg mb-4">Discover the Latest Releases and
+            Features...</h1>
+        </div>
         <div className="flex gap-10">
           {/* card 1 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
               <img src={product1} alt="Shoes" />
             </figure>
           </div>
           {/* card 2 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
               <img src={product2} alt="Shoes" />
             </figure>
           </div>
           {/* card 3 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
               <img src={product3} alt="Shoes" />
             </figure>
           </div>
           {/* card 4 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
               <img src={product4} alt="Shoes" />
             </figure>
           </div>
           {/* card 5 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
-              <img  className="h-28" src={product5} alt="Shoes" />
+              <img className="h-28" src={product5} alt="Shoes" />
             </figure>
           </div>
           {/* card 6 */}
@@ -64,7 +62,7 @@ const Gallery = () => {
             </figure>
           </div>
           {/* card 7 */}
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card w-96 bg-base-100 ">
             <figure>
               <img className="h-28" src={product7} alt="Shoes" />
             </figure>
@@ -72,6 +70,7 @@ const Gallery = () => {
         </div>
       </div>
     </Marquee>
+   </div>
   );
 };
 
