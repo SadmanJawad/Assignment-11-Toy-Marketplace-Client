@@ -68,8 +68,7 @@ const UpdateMyToys = () => {
 
 
     return (
-        <div>
-                <h1> Update toys : {name}</h1>         
+        <div>      
                 <div className="bg-sky-100 p-12">
       <h2 className="text-4xl font-light text-center mb-5">Update a toy</h2>
       <form onSubmit={handleUpdateToy}>

@@ -5,7 +5,6 @@ import MyToysRow from "./MyToysRow";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:5000/mytoys/${user?.email}`)
@@ -18,28 +17,11 @@ const MyToys = () => {
 
 
 
-const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        setToys(data);
-        }               
-    );
-}
+
 
   return (
     <div>
       {/* <h2>My Toys: {toys.length}</h2> */}
-      <div className="text-end container">
-      <input
-       type="text"
-       placeholder="Search here"
-        className="input input-bordered input-xs w-full max-w-xs mb-4"
-        onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button onClick={handleSearch} className="btn btn-xs bg-sky-400 border-none ml-1">Search</button>
-      </div>
 
       <div className="overflow-x-auto">
         <table className="table table-compact w-full container mx-auto">
