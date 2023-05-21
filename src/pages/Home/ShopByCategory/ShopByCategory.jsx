@@ -1,73 +1,64 @@
-import { useEffect, useState } from "react";
-import ShopByCategoryCard from "../ShopByCategoryCard/ShopByCategoryCard";
+import { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+// import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import ShopByCategoryCard from '../ShopByCategoryCard/ShopByCategoryCard';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
 
 const ShopByCategory = () => {
-  // useEffect(() => {
-
-  // },[]);
-
+    useEffect(() => {
+        Aos.init({duration: 2000});
+      }, []);
+  const categories = ['Lego City', 'Lego Star Wars', 'lego cars'];
+  const [activeCategory, setActiveCategory] = useState('');
   const [toys, setToys] = useState([]);
-  const [activeTab, setActiveTab] = useState("LegoCity");
 
-  const url = `http://localhost:5000/toySearchByTitle/${activeTab}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setToys(data));
-  }, [url, activeTab]);
+    setActiveCategory(categories[0] || '');
+    fetchToys(categories[0]);
+  }, []);
 
-  const handleTab = (categoryName) => {
-    setActiveTab(categoryName);
+  const fetchToys = async (category) => {
+    try {
+      const response = await fetch(`https://toy-store-server-zeta.vercel.app/toys/tabs/${category}`);
+      const data = await response.json();
+      setToys(data);
+    } catch (error) {
+      console.error('Error fetching toys by sub-category:', error);
+    }
+  };
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    fetchToys(category);
   };
 
   return (
-    <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
-      <div className="mx-auto max-w-screen-sm">
-        <h2 className="mb-4 text-4xl text-sky-500 tracking-tight font-normal">
-          Shop by Category
-        </h2>
-        <p className="text-xl text-gray-400">
-          Explore the whole collection of Lego Toy with just a click.
-        </p>
-      </div>
-      {/* tabs */}
-      <div className="my-16">
-        <div className="tabs flex justify-center items-center">
-          <div
-            onClick={() => handleTab("LegoCity")}
-            className={`m-2 px-6 py-2 text-lg rounded font-semibold cursor-pointer transition-all duration-300 text-white ${
-              activeTab == "LegoCity" ? " bg-sky-800 text-white" : "bg-sky-400"
-            }`}
-          >
-            Lego City
-          </div>
-          <div
-            onClick={() => handleTab("LegoArchitecture")}
-            className={`m-2 px-6 py-2 text-lg rounded font-semibold cursor-pointer transition-all duration-300 text-white ${
-              activeTab == "LegoArchitecture"
-                ? " bg-sky-800 text-white"
-                : "bg-sky-400"
-            }`}
-          >
-            Lego Architecture
-          </div>
-          <div
-            onClick={() => handleTab("LegoStarWars")}
-            className={`m-2 px-6 py-2 text-lg rounded font-semibold cursor-pointer transition-all duration-300 text-white  ${
-              activeTab == "LegoStarWars"
-                ? " bg-sky-800 text-white"
-                : "bg-sky-400"
-            }`}
-          >
-            Lego Star Wars
-          </div>
+    <div className="mb-32" data-aos="fade-up">
+      <h2 className="text-3xl font-bold mb-10 text-center">Shop by Category</h2>
+      <div className=" py-8 px-4 w-5/6 mx-auto rounded-xl">
+        <div className="flex justify-center space-x-4 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`bg-black px-4 py-2 rounded-lg ${activeCategory === category ? 'bg-blue-400 text-white outline-1' : 'bg-gray-300 text-gray-700'
+                }`}
+              onClick={() => handleCategoryChange(category)}
+            >
+              {category}
+            </button>
+          ))}
         </div>
-      </div>
-      {/* cards */}
-      <div  className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
-        {toys.map((toy) => (
-          <ShopByCategoryCard key={toy._id} toy={toy}></ShopByCategoryCard>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 mx-auto" data-aos="fade-right">
+          {toys.map((toy) => (
+                <ShopByCategoryCard
+                key={toy._id}
+                toy={toy}
+                ></ShopByCategoryCard>
+
+          ))}
+        </div>
       </div>
     </div>
   );

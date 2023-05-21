@@ -7,7 +7,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys/${user?.email}`)
+    fetch(`https://toy-store-server-zeta.vercel.app/mytoys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -27,7 +27,7 @@ const MyToys = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>pictureUrl</th>
+              {/* <th>pictureUrl</th> */}
               <th>toyName</th>
               <th>Name</th>
               <th>Email</th>

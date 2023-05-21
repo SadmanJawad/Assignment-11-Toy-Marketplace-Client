@@ -45,12 +45,12 @@ const router = createBrowserRouter([
         {
           path: 'viewDetails/:id',
           element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-          // loader: ({params}) => fetch(`http://localhost:5000/filteredToys/${params.id}}`)
+          // loader: ({params}) => fetch(`https://toy-store-server-zeta.vercel.app/filteredToys/${params.id}}`)
         },
         {
           path: '/update-my-toys/:id',
           element: <PrivateRoutes><UpdateMyToys></UpdateMyToys></PrivateRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/filteredToys/${params.id}`)
+          loader: ({params}) => fetch(`https://toy-store-server-zeta.vercel.app/filteredToys/${params.id}`)
         },
         {
           path: '/blog',

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 
 const MyToysRow = ({toy}) => {
-    const { _id, pictureUrl, name, sellerName, sellerEmail, subCategory, price, rating, availableQuantity, description } = toy;
+    const { _id,  name, sellerName, sellerEmail, subCategory, price, rating, availableQuantity, description } = toy;
     
     const handleDelete = _id => {
        console.log(_id)
@@ -25,7 +25,7 @@ const MyToysRow = ({toy}) => {
             'success'
           )
         console.log('delete confirmed')
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toy-store-server-zeta.vercel.app/toys/${_id}`, {
             method: "DELETE",
             })
             .then((res) => res.json())
@@ -50,7 +50,7 @@ const MyToysRow = ({toy}) => {
 
     return (
         <tr>
-                <td>{pictureUrl} </td>
+                {/* <td>{pictureUrl} </td> */}
                 <td>{name}</td>
                 <td>{sellerName}</td>
                 <td>{sellerEmail}</td>

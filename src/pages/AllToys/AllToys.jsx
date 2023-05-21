@@ -6,7 +6,7 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  const url = "http://localhost:5000/toys";
+  const url = "https://toy-store-server-zeta.vercel.app/toys";
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -15,7 +15,7 @@ const AllToys = () => {
   console.log(toys);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
+    fetch(`https://toy-store-server-zeta.vercel.app/toySearchByTitle/${searchText}`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data);

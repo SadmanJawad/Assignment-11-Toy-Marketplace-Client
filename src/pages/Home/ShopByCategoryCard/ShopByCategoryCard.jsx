@@ -9,7 +9,7 @@ const ShopByCategoryCard = ({toy}) => {
         <div className=''>
       <div className="card card-compact bg-base-100 shadow-xl ">
         <figure><img className='h-40' src={pictureUrl} alt="Shoes" /></figure>
-        <div className="card-body">
+        <div className="card-body text-center">
           <h2 className="text-center text-xl font-semibold">{name}</h2>
           <p className='text-lg'>Price: ${price}</p>
           <p className='text-lg'>Quantity:{availableQuantity}</p>
@@ -22,7 +22,7 @@ const ShopByCategoryCard = ({toy}) => {
               fullSymbol={<FaStar />}
             />
           </p>
-          <Link  to={`/viewDetails/${_id}`}><button className='w-2/4 mx-auto'>
+          <Link  to={`/viewDetails/${_id}`}><button className='w-2/4 mx-auto btn bg-sky-500'>
       View Details
     </button></Link>
    

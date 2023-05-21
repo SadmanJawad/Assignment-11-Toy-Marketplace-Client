@@ -39,7 +39,7 @@ const AddAToy = () => {
     console.log(newToy);
 
     // send data to the server
-    fetch("http://localhost:5000/addAToy", {
+    fetch("https://toy-store-server-zeta.vercel.app/addAToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

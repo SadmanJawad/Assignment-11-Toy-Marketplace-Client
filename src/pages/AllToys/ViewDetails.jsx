@@ -1,7 +1,7 @@
 // import { useLoaderData, useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ViewDetails = () => {
     const [details, setDetails] = useState({});
@@ -10,7 +10,7 @@ const ViewDetails = () => {
   const {id} = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/filteredToys/${id}`)   
+    fetch(`https://toy-store-server-zeta.vercel.app/filteredToys/${id}`)   
     .then(res => res.json())
     .then(data => setDetails(data))  
   },[id])
@@ -36,6 +36,7 @@ const ViewDetails = () => {
           <p>Description: {description} </p>
           
         </div>
+      <Link to='/' ><button className="btn bg-sky-500">Back to home</button> </Link> 
       </div>
     </div>
   );
