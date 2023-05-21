@@ -73,7 +73,7 @@ const Navbar = () => {
             <Link to='/add-a-toy' className="text-gray-900 dark:text-white hover:underline">Add a toy</Link>
         </li>
         <li>
-            <a href="#" className="text-gray-900 dark:text-white hover:underline">Blogs</a>
+            <Link to='/blog' className="text-gray-900 dark:text-white hover:underline">Blogs</Link>
         </li>
         <li>
             <a href="#" className="text-gray-900 dark:text-white hover:underline">Contact Us</a>
