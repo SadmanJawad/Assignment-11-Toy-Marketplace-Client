@@ -36,7 +36,7 @@ const ShopByCategory = () => {
 
   return (
     <div className="mb-32" data-aos="fade-up">
-      <h2 className="text-3xl font-bold mb-10 text-center">Shop by Category</h2>
+      <h2 className="text-3xl font-bold mb-10 mt-5 text-center">Shop by Category</h2>
       <div className=" py-8 px-4 w-5/6 mx-auto rounded-xl">
         <div className="flex justify-center space-x-4 mb-8">
           {categories.map((category) => (

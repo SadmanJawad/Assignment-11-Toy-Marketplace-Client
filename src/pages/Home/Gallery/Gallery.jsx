@@ -10,7 +10,7 @@ import Marquee from "react-fast-marquee";
 const Gallery = () => {
   return (
    <div className="bg-sky-50">
-       <h1 className="text-5xl text-center my-2 font-light font-serif">Photo Gallery</h1>
+       <h1 className="text-5xl text-center my-5 font-light font-serif">Photo Gallery</h1>
      <Marquee>
       <div className="container mt-4 mx-auto ">
         <div className="flex">

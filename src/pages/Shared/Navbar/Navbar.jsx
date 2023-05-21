@@ -71,48 +71,66 @@ const Navbar = () => {
 
 </nav>
 
-  <div className="bg-gray-50 dark:bg-gray-700">
-      <div className="sm:max-w-screen-xl px-4 py-3 mx-auto">
-        <div className="flex items-center">
-          <ul className={`flex flex-row font-light mt-0 mr-6 space-x-8 text-md ${isMobile ? 'flex-wrap' : 'ml-96'}`}>
+ 
+
+<div className="bg-gray-50 dark:bg-gray-700">
+  <div className="sm:max-w-screen-xl px-4 py-3 mx-auto">
+    <div className="flex flex-wrap items-center justify-center">
+      <ul className="flex flex-row font-light mt-0 mr-6 space-x-8 text-md">
+        <li>
+          <Link
+            to="/"
+            className="text-gray-900 dark:text-white hover:underline"
+            aria-current="page"
+          >
+            Home
+          </Link>
+        </li>
+        {user && (
+          <>
             <li>
-              <Link to="/" className="text-gray-900 dark:text-white hover:underline" aria-current="page">
-                Home
-              </Link>
-            </li>
-            {user && (
-              <>
-                <li>
-                  <Link to="/allToys" className="text-gray-900 dark:text-white hover:underline">
-                    All Toys
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/myToys" className="text-gray-900 dark:text-white hover:underline">
-                    My Toys
-                  </Link>
-                </li>
-              </>
-            )}
-            <li>
-              <Link to="/add-a-toy" className="text-gray-900 dark:text-white hover:underline">
+              <Link
+                to="/add-a-toy"
+                className="text-gray-900 dark:text-white hover:underline"
+              >
                 Add a toy
               </Link>
             </li>
             <li>
-              <Link to="/blog" className="text-gray-900 dark:text-white hover:underline">
-                Blogs
+              <Link
+                to="/myToys"
+                className="text-gray-900 dark:text-white hover:underline"
+              >
+                My Toys
               </Link>
             </li>
-            <li>
-              <a href="#" className="text-gray-900 dark:text-white hover:underline">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+          </>
+        )}
+        <li>
+          <Link
+            to="/allToys"
+            className="text-gray-900 dark:text-white hover:underline"
+          >
+            All Toys
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/blog"
+            className="text-gray-900 dark:text-white hover:underline"
+          >
+            Blogs
+          </Link>
+        </li>
+        <li>
+          <a href="#" className="text-gray-900 dark:text-white hover:underline">
+            Contact Us
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
+</div>
 
 
 
