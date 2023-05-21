@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const AddAToy = () => {
+  useTitle("Add a Toy")
   const [selectedOption, setSelectedOption] = useState("");
   const { user } = useContext(AuthContext);
   const handleDropdownChange = (event) => {

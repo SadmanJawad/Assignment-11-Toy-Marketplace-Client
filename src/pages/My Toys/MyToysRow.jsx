@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
-const MyToysRow = ({toy,setNoLoading,noLoading}) => {
+const MyToysRow = ({toy}) => {
     const { _id,  name, sellerName, sellerEmail, subCategory, price, rating, availableQuantity, description } = toy;
     
     const handleDelete = _id => {
@@ -38,9 +38,6 @@ const MyToysRow = ({toy,setNoLoading,noLoading}) => {
                     icon: "success",
                     confirmButtonText: "Ok",
                 });
-                const remaining = noLoading.filter(nol => nol._id !== _id)
-                setNoLoading(remaining);
-                
                 }
             });
         }else{

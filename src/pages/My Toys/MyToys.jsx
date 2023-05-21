@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import MyToysRow from "./MyToysRow";
+import useTitle from "../../hooks/useTitle";
 
 const MyToys = () => {
+  useTitle("My Toys")
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
-
-  const [noLoading, setNoLoading] = useState(toys);
+  
 
   useEffect(() => {
     fetch(`https://toy-store-server-zeta.vercel.app/mytoys/${user?.email}`)
@@ -47,8 +48,6 @@ const MyToys = () => {
                     toys.map((toy) => <MyToysRow
                     key={toy._id}
                     toy={toy}
-                    noLoading={noLoading}
-                    setNoLoading= {setNoLoading}
                     ></MyToysRow>
                     )
                 }
