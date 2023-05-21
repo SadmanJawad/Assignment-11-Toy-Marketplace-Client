@@ -52,11 +52,40 @@ const Navbar = () => {
             )}
         </div>
     </div>
+    <div className="dropdown">
+      <label tabIndex={0} className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </label>
+      <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+      <li>
+            <Link to='/' className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
+        </li>
+     
+        {
+        user &&  <li>
+        <Link to='/allToys' className="text-gray-900 dark:text-white hover:underline">All Toys</Link>
+    </li>
+       }
+             {user &&    <li>
+            <Link to='/myToys' className="text-gray-900 dark:text-white hover:underline">My Toys</Link>
+        </li> 
+     }
+       <li>
+            <Link to='/add-a-toy' className="text-gray-900 dark:text-white hover:underline">Add a toy</Link>
+        </li>
+        <li>
+            <Link to='/blog' className="text-gray-900 dark:text-white hover:underline">Blogs</Link>
+        </li>
+        <li>
+            <a href="#" className="text-gray-900 dark:text-white hover:underline">Contact Us</a>
+        </li>
+      </ul>
+    </div>
 </nav>
-<nav className="bg-gray-50 dark:bg-gray-700">
-    <div className="max-w-screen-xl px-4 py-3 mx-auto">
+<div className="bg-gray-50 dark:bg-gray-700">
+    <div className="sm:max-w-screen-xl px-4 py-3 mx-auto">
         <div className="flex items-center">
-            <ul className="flex flex-row font-extralight mt-0 mr-6 space-x-8 text-md ml-96">
+            <ul className="flex flex-row font-light mt-0 mr-6 space-x-8 text-md ml-96">
         <li>
             <Link to='/' className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
         </li>
@@ -81,7 +110,9 @@ const Navbar = () => {
             </ul>
         </div>
     </div>
-</nav>
+</div>
+
+
 </div>
     );
 };

@@ -29,7 +29,7 @@ const AllToys = () => {
         <div className="text-end container">
       <input
        type="text"
-       placeholder="Search by Search Category is ok,But Toy Name not ok"
+       placeholder="Search"
         className="input input-bordered input-xs w-full max-w-xs mb-4"
         onChange={(e) => setSearchText(e.target.value)}
         />
