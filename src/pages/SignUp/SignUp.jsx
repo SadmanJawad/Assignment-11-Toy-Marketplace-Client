@@ -2,8 +2,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../../assets/images/img.svg";
 import  { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const SignUp = () => {
+  useTitle("SignUp");
   const { createUser, userProfileUpdate } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");

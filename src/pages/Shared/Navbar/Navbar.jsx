@@ -122,11 +122,7 @@ const Navbar = () => {
             Blogs
           </Link>
         </li>
-        <li>
-          <a href="#" className="text-gray-900 dark:text-white hover:underline">
-            Contact Us
-          </a>
-        </li>
+     
       </ul>
     </div>
   </div>

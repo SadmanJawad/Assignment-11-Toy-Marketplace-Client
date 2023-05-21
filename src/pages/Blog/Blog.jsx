@@ -1,4 +1,7 @@
+import useTitle from "../../hooks/useTitle";
+
 const Blog = () => {
+  useTitle("Blog")
   return (
     <div className="container mx-auto grid grid-cols-2 gap-4 shadow-sky-600 mb-5">
       <div className="bg-sky-100">
