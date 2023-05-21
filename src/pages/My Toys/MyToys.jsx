@@ -6,6 +6,8 @@ const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
 
+  const [noLoading, setNoLoading] = useState(toys);
+
   useEffect(() => {
     fetch(`https://toy-store-server-zeta.vercel.app/mytoys/${user?.email}`)
       .then((res) => res.json())
@@ -45,6 +47,8 @@ const MyToys = () => {
                     toys.map((toy) => <MyToysRow
                     key={toy._id}
                     toy={toy}
+                    noLoading={noLoading}
+                    setNoLoading= {setNoLoading}
                     ></MyToysRow>
                     )
                 }
