@@ -16,9 +16,7 @@ const MyToys = () => {
       });
   }, [user]);
 
-//   useEffect(() => {
-    
-//   },[])
+
 
 const handleSearch = () => {
     fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
@@ -31,16 +29,16 @@ const handleSearch = () => {
 }
 
   return (
-    <div >
-      <h2>My Toys: {toys.length}</h2>
-      <div className="text-center">
+    <div>
+      {/* <h2>My Toys: {toys.length}</h2> */}
+      <div className="text-end container">
       <input
        type="text"
        placeholder="Search here"
         className="input input-bordered input-xs w-full max-w-xs mb-4"
         onChange={(e) => setSearchText(e.target.value)}
         />
-        <button onClick={handleSearch} className="btn btn-xs bg-sky-500 border-none ml-1">Search</button>
+        <button onClick={handleSearch} className="btn btn-xs bg-sky-400 border-none ml-1">Search</button>
       </div>
 
       <div className="overflow-x-auto">
@@ -57,6 +55,8 @@ const handleSearch = () => {
               <th>rating</th>
               <th>Quantity</th>
               <th>description</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
