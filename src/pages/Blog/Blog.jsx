@@ -1,8 +1,8 @@
 const Blog = () => {
   return (
-    <div className="container mx-auto">
-      <div>
-        <h1 className="bg-sky-300">
+    <div className="container mx-auto grid grid-cols-2 gap-4 shadow-sky-600 mb-5">
+      <div className="bg-sky-100">
+        <h1 className="bg-sky-300 font-bold text-lg">
           Q-1: What is an access token and refresh token? How do they work and
           where should we store them on the client-side?
         </h1>
@@ -31,7 +31,7 @@ const Blog = () => {
         </p>
       </div>
       <div>
-        <h1 className="bg-sky-300">Q-2: Compare SQL and NoSQL databases?</h1>
+        <h1 className="bg-sky-300 font-bold text-lg">Q-2: Compare SQL and NoSQL databases?</h1>
         <p>
           SQL databases can be scaled up, which means they can handle a larger
           load by adding more resources to a single server. NoSQL databases, on
@@ -59,7 +59,7 @@ const Blog = () => {
         </p>
       </div>
       <div>
-        <h1 className="bg-sky-300">Q-3 : What is express js? What is Nest JS?</h1>
+        <h1 className="bg-sky-300 font-bold text-lg">Q-3 : What is express js? What is Nest JS?</h1>
         <p>
           Express.js is a lightweight and versatile web application framework
           built specifically for Node.js. It offers a simple and minimalist
@@ -87,8 +87,8 @@ const Blog = () => {
           modules/components.
         </p>
       </div>
-      <div>
-        <h1 className="bg-sky-300">What is MongoDB aggregate and how does it work?</h1>
+      <div  className="bg-sky-100">
+        <h1 className="bg-sky-300 font-bold text-lg">What is MongoDB aggregate and how does it work?</h1>
         <p>
           In MongoDB, the Aggregate method is used to perform complex data
           aggregation operations on collections. Facilitate the processing and

@@ -43,13 +43,14 @@ const router = createBrowserRouter([
           element: <PrivateRoutes><AddAToy></AddAToy></PrivateRoutes>
         },
         {
-          path: '/view-details',
-          element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>
+          path: 'viewDetails/:id',
+          element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
+          // loader: ({params}) => fetch(`http://localhost:5000/filteredToys/${params.id}}`)
         },
         {
           path: '/update-my-toys/:id',
           element: <PrivateRoutes><UpdateMyToys></UpdateMyToys></PrivateRoutes>,
-          loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+          loader: ({params}) => fetch(`http://localhost:5000/filteredToys/${params.id}`)
         },
         {
           path: '/blog',

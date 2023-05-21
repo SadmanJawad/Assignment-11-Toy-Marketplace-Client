@@ -19,11 +19,11 @@ const MyToysRow = ({toy}) => {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-        //   Swal.fire(
-        //     'Deleted!',
-        //     'Your file has been deleted.',
-        //     'success'
-        //   )
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
         console.log('delete confirmed')
         fetch(`http://localhost:5000/toys/${_id}`, {
             method: "DELETE",
